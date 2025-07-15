@@ -74,14 +74,25 @@ terminal-ascii-art/
 
 ### 測試方法
 ```bash
-# 測試 cowsay
-cowsay -f ./cowsay/capybara.cow "測試訊息"
-
-# 測試 figlet
-figlet -f ./figlet/capybara.flf "TEST"
-
-# 測試 asciiart
+# 測試 asciiart (已完成)
 ./scripts/show-capybara.sh relaxed
+./scripts/show-capybara.sh zen
+./scripts/show-capybara.sh happy
+./scripts/show-capybara.sh swimming
+./scripts/show-capybara.sh sleepy
+./scripts/show-capybara.sh small
+./scripts/show-capybara.sh random
+./scripts/show-capybara.sh help
+
+# 測試 cowsay (已完成)
+cowsay -f ./cowsay/capybara.cow "測試訊息"
+cowsay -f ./cowsay/capybara-zen.cow "Finding peace"
+cowsay -f ./cowsay/capybara-happy.cow "So happy!"
+cowsay -f ./cowsay/capybara-swimming.cow "Just swimming"
+cowsay -f ./cowsay/capybara-sleepy.cow "Zzz..."
+
+# 測試 figlet (開發中)
+figlet -f ./figlet/capybara.flf "TEST"
 ```
 
 ## 🚀 部署流程
@@ -101,13 +112,17 @@ figlet -f ./figlet/capybara.flf "TEST"
 ## 📸 測試案例
 
 ### 基本功能測試
-- [ ] cowsay 所有風格都能正常顯示
+- [x] cowsay 所有風格都能正常顯示
+- [x] asciiart 腳本執行無誤
+- [x] 6種風格圖案正確顯示
+- [x] 隨機選擇功能正常
+- [x] 幫助功能完整
 - [ ] figlet 字型檔案語法正確
-- [ ] asciiart 腳本執行無誤
 - [ ] 安裝腳本在 macOS 和 Linux 正常運作
 
 ### 相容性測試
-- [ ] 不同終端環境（iTerm2、Terminal.app、VSCode）
+- [x] macOS 環境測試通過（iTerm2、Terminal.app）
+- [ ] Linux 環境測試
 - [ ] 不同字型和顏色設定
 - [ ] 不同終端尺寸
 
@@ -119,12 +134,12 @@ figlet -f ./figlet/capybara.flf "TEST"
 - 重要決策記錄
 
 ### 子 Issues
-1. 設計 Capybara ASCII Art 圖案集
-2. 實作 cowsay capybara.cow 檔案
-3. 實作 figlet capybara.flf 字型檔案
-4. 實作 asciiart capybara 圖案庫
-5. 創建安裝腳本和工具鏈
-6. 完善文件和使用說明
+1. ✅ 設計 Capybara ASCII Art 圖案集 (已完成)
+2. ✅ 實作 cowsay capybara.cow 檔案 (已完成)
+3. 🔄 實作 figlet capybara.flf 字型檔案 (開發中)
+4. ✅ 實作 asciiart capybara 圖案庫 (MVP 完成)
+5. 🔄 創建安裝腳本和工具鏈 (待開發)
+6. 🔄 完善文件和使用說明 (進行中)
 
 ## 🔒 安全考量
 
