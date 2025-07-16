@@ -6,18 +6,26 @@
 
 本專案提供：
 - **cowsay** - 可愛的水豚對話框，支援多種表情 ✅ **已完成**
-- **figlet** - 水豚風格的文字字型 🔄 **開發中**
+- **figlet** - 水豚風格的文字字型 ✅ **已完成**
 - **asciiart** - 豐富的水豚圖案庫和場景 ✅ **已完成**
+- **jp2a** - 照片轉 ASCII 工具 ✅ **已完成**
+
+## 📸 圖片授權聲明
+
+**本專案使用的所有水豚照片均來自 Pixabay，為免費開放授權圖片。**
+- 所有照片都可以自由使用、修改和分享
+- 無需署名（但我們感謝 Pixabay 的貢獻者們！）
+- 可用於個人和商業用途
 
 ## 🚀 快速開始
 
 ### 安裝依賴
 ```bash
 # macOS
-brew install cowsay figlet
+brew install cowsay figlet jp2a
 
 # Ubuntu/Debian
-sudo apt-get install cowsay figlet
+sudo apt-get install cowsay figlet jp2a
 
 # 或使用專案提供的安裝腳本
 ./scripts/install-dependencies.sh
@@ -31,8 +39,11 @@ sudo apt-get install cowsay figlet
 # 🐄 cowsay 水豚對話 (立即可用)
 cowsay -f ./cowsay/capybara.cow "Hello! I'm a chill capybara 🌿"
 
-# 🔤 figlet 水豚字型 (開發中)
+# 🔤 figlet 水豚字型 (立即可用)
 figlet -f ./figlet/capybara.flf "CAPY"
+
+# 📸 jp2a 照片轉 ASCII (立即可用)
+./scripts/show-capybara-photo.sh gallery
 ```
 
 ## 📁 專案結構
@@ -50,9 +61,13 @@ terminal-ascii-art/
 ├── asciiart/          # ASCII art 圖案庫 ✅
 │   └── capybara-gallery.txt   # 6種風格圖案
 ├── scripts/           # 工具腳本 ✅
-│   └── show-capybara.sh       # 圖案顯示腳本
-├── figlet/            # figlet 字型檔案 🔄
-│   └── (開發中)
+│   ├── show-capybara.sh       # 圖案顯示腳本
+│   ├── show-capybara-photo.sh # 照片轉 ASCII 腳本
+│   └── convert-photo.sh       # jp2a 轉換工具
+├── figlet/            # figlet 字型檔案 ✅
+│   └── capybara.flf           # 水豚字型
+├── photos/            # 照片素材 ✅
+│   └── originals/             # Pixabay 免費照片
 └── examples/          # 使用範例 🔄
     └── (待完成)
 ```
