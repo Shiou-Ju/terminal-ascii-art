@@ -44,6 +44,10 @@ figlet -f ./figlet/capybara.flf "CAPY"
 
 # 📸 jp2a 照片轉 ASCII (立即可用)
 ./scripts/show-capybara-photo.sh gallery
+
+# ⠿ Braille 點字藝術動畫 (立即可用)
+./scripts/show-braille-animation.sh      # 顯示全部 41 個圖案
+./scripts/show-braille-animation.sh 25   # 顯示特定編號
 ```
 
 ## 📁 專案結構
@@ -59,11 +63,16 @@ terminal-ascii-art/
 │   ├── capybara-swimming.cow  # 游泳風格
 │   └── capybara-sleepy.cow    # 愛睏表情
 ├── asciiart/          # ASCII art 圖案庫 ✅
-│   └── capybara-gallery.txt   # 6種風格圖案
+│   ├── capybara-gallery.txt        # 10種風格圖案
+│   ├── capybara-braille-complete.txt # 41個 Braille 圖案
+│   ├── capybara-scenes.txt         # 場景圖案
+│   ├── capybara-animations.txt     # 動畫幀
+│   └── credits.txt                 # 版權資訊
 ├── scripts/           # 工具腳本 ✅
-│   ├── show-capybara.sh       # 圖案顯示腳本
-│   ├── show-capybara-photo.sh # 照片轉 ASCII 腳本
-│   └── convert-photo.sh       # jp2a 轉換工具
+│   ├── show-capybara.sh            # 主要圖案顯示腳本
+│   ├── show-braille-animation.sh   # Braille 動畫腳本
+│   ├── show-capybara-photo.sh      # 照片轉 ASCII 腳本
+│   └── convert-photo.sh            # jp2a 轉換工具
 ├── figlet/            # figlet 字型檔案 ✅
 │   └── capybara.flf           # 水豚字型
 ├── photos/            # 照片素材 ✅
@@ -74,12 +83,31 @@ terminal-ascii-art/
 
 ## 🎨 可用的水豚風格
 
+### ASCII Art 風格
 - **relaxed** - 悠閒放鬆的水豚 `●   ●`
 - **zen** - 禪意冥想的水豚 `-   -`
 - **swimming** - 游泳中的水豚 `~ ~ ~`
 - **happy** - 開心的水豚 `^   ^` ✨
 - **sleepy** - 愛睏的水豚 `˘   ˘` 💤
 - **small** - 小型基本水豚（緊湊版）
+
+### 🎯 Braille 點字藝術 (41 個高解析度圖案)
+```bash
+# 顯示所有 Braille 圖案動畫
+./scripts/show-braille-animation.sh
+
+# 顯示特定編號的圖案
+./scripts/show-braille-animation.sh 3
+./scripts/show-braille-animation.sh 13
+./scripts/show-braille-animation.sh 34
+./scripts/show-braille-animation.sh 25
+
+# 我的最愛 ❤️
+./scripts/show-braille-animation.sh 3    # 極簡風格
+./scripts/show-braille-animation.sh 13   # 優雅側臉
+./scripts/show-braille-animation.sh 34   # 完整細節
+./scripts/show-braille-animation.sh 25   # 可愛正面
+```
 
 ## 🔧 設定別名
 
