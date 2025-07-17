@@ -57,12 +57,39 @@ if [[ -n "$current_pattern" ]]; then
     pattern_names+=("$pattern_name")
 fi
 
-# Parse command line argument
+# Parse command line arguments
 ARG="$1"
 START_IDX=0
 END_IDX=$((${#patterns[@]} - 1))
 
-if [[ -n "$ARG" ]]; then
+# Parse additional parameters
+FAST_MODE=false
+NO_CLEAR=false
+QUIET_MODE=false
+STARTUP_MODE=false
+
+# Check for parameters
+for param in "$@"; do
+    case $param in
+        --fast|--no-sleep)
+            FAST_MODE=true
+            ;;
+        --no-clear)
+            NO_CLEAR=true
+            ;;
+        --quiet)
+            QUIET_MODE=true
+            ;;
+        --startup)
+            STARTUP_MODE=true
+            FAST_MODE=true
+            NO_CLEAR=true
+            QUIET_MODE=true
+            ;;
+    esac
+done
+
+if [[ -n "$ARG" && ! "$ARG" =~ ^-- ]]; then
     if [[ "$ARG" =~ ^[0-9]+$ ]]; then
         # Single number: show only that pattern
         PATTERN_NUM=$((ARG - 1))  # Convert to 0-based index
@@ -85,24 +112,45 @@ if [[ -n "$ARG" ]]; then
             exit 1
         fi
     else
-        echo -e "${YELLOW}Usage: $0 [number|range]${NC}"
-        echo -e "${YELLOW}  $0         - Show all patterns${NC}"
-        echo -e "${YELLOW}  $0 5       - Show pattern 5${NC}"
-        echo -e "${YELLOW}  $0 1-10    - Show patterns 1 to 10${NC}"
+        echo -e "${YELLOW}Usage: $0 [number|range] [options]${NC}"
+        echo -e "${YELLOW}  $0                    - Show all patterns${NC}"
+        echo -e "${YELLOW}  $0 5                 - Show pattern 5${NC}"
+        echo -e "${YELLOW}  $0 1-10              - Show patterns 1 to 10${NC}"
+        echo -e "${YELLOW}  $0 3 --fast          - Show pattern 3 without delay${NC}"
+        echo -e "${YELLOW}  $0 25 --startup      - Show pattern 25 in startup mode${NC}"
+        echo ""
+        echo -e "${YELLOW}Options:${NC}"
+        echo -e "${YELLOW}  --fast, --no-sleep   - No delay between frames${NC}"
+        echo -e "${YELLOW}  --no-clear           - Don't clear screen${NC}"
+        echo -e "${YELLOW}  --quiet              - Don't show title and info${NC}"
+        echo -e "${YELLOW}  --startup            - Startup mode (fast + no-clear + quiet)${NC}"
         exit 1
     fi
 fi
 
-# Show selected patterns with 1 second delay
+# Show selected patterns with optional delay
 for i in $(seq $START_IDX $END_IDX); do
-    clear
-    echo -e "${CYAN}🦫 Braille Capybara Animation${NC}"
-    echo -e "${YELLOW}Credit: emojicombos.com/capybara-ascii-art${NC}"
-    echo ""
-    echo -e "${GREEN}Pattern: ${pattern_names[$i]} (${i+1}/${#patterns[@]})${NC}"
-    echo ""
+    # Clear screen unless --no-clear is specified
+    if [[ "$NO_CLEAR" != true ]]; then
+        clear
+    fi
+    
+    # Show header unless --quiet is specified
+    if [[ "$QUIET_MODE" != true ]]; then
+        echo -e "${CYAN}🦫 Braille Capybara Animation${NC}"
+        echo -e "${YELLOW}Credit: emojicombos.com/capybara-ascii-art${NC}"
+        echo ""
+        echo -e "${GREEN}Pattern: ${pattern_names[$i]} (${i+1}/${#patterns[@]})${NC}"
+        echo ""
+    fi
+    
+    # Show the pattern
     echo "${patterns[$i]}"
-    sleep 1
+    
+    # Add delay unless --fast is specified
+    if [[ "$FAST_MODE" != true ]]; then
+        sleep 1
+    fi
 done
 
 # Final message
