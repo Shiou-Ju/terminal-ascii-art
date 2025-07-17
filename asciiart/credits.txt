@@ -1,0 +1,51 @@
+# 🦫 Capybara ASCII Art Credits
+
+## 🙏 Special Thanks
+
+### Braille Art Sources
+部分 Braille 點字藝術作品來自 [emojicombos.com](https://emojicombos.com/capybara-ascii-art)
+感謝原作者的精美創作！
+
+These Braille art pieces are credited to emojicombos.com/capybara-ascii-art
+每個作品都保留了原始來源標註。
+
+### Original ASCII Art
+Hand-crafted ASCII art designs created specifically for this project:
+- Traditional capybara designs (relaxed, zen, happy, swimming, sleepy, small)
+- Enhanced versions with improved proportions
+- Profile and sitting variations
+- Scene collections with contextual backgrounds
+- Animation frames for dynamic display
+
+### Emoji and Unicode Characters
+- Braille patterns (U+2800-U+28FF) for high-resolution art
+- Various emoji for scene enhancement (🦫🌿🌸🌅💤☁️♨️)
+- Japanese characters for authentic atmosphere
+
+## 📄 License Information
+
+### Our Contributions
+All original ASCII art, scripts, and enhancements in this project are released under MIT License.
+
+### Third-party Content
+- Braille art patterns: Credit to emojicombos.com (used with attribution)
+- Emoji: Unicode Consortium standard characters
+- Fonts: Terminal-compatible ASCII characters
+
+## 🌟 Inspiration Sources
+
+### Real Capybaras
+This project was inspired by the peaceful nature of real capybaras:
+- Japanese hot spring capybaras
+- South American wildlife
+- Their calm and zen-like demeanor
+
+### ASCII Art Community
+Thanks to the vibrant ASCII art community for:
+- Technical innovation in text-based art
+- Creative use of Unicode characters
+- Preservation of terminal art traditions
+
+---
+
+*Creating terminal art that brings joy, one capybara at a time!* 🦫
