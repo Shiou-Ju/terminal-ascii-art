@@ -107,6 +107,56 @@ terminal-ascii-art/
 ./scripts/show-braille-animation.sh 13   # 優雅側臉
 ./scripts/show-braille-animation.sh 34   # 完整細節
 ./scripts/show-braille-animation.sh 25   # 可愛正面
+
+# 進階選項
+./scripts/show-braille-animation.sh 25 --fast      # 快速顯示（無延遲）
+./scripts/show-braille-animation.sh 3 --no-clear   # 不清除螢幕
+./scripts/show-braille-animation.sh 13 --quiet     # 靜音模式（不顯示標題）
+./scripts/show-braille-animation.sh 34 --startup   # 啟動模式（結合所有靜音選項）
+```
+
+### 🎭 場景圖案
+```bash
+# 顯示可用場景
+./scripts/show-capybara.sh scene
+
+# 顯示特定場景
+./scripts/show-capybara.sh scene-onsen      # 溫泉場景
+./scripts/show-capybara.sh scene-river      # 河邊晨景
+./scripts/show-capybara.sh scene-picnic     # 草地野餐
+./scripts/show-capybara.sh scene-family     # 親子互動
+./scripts/show-capybara.sh scene-sunset     # 夕陽沉思
+./scripts/show-capybara.sh scene-rain       # 雨天耐心
+```
+
+### 🎬 動畫效果
+```bash
+# 播放所有動畫
+./scripts/show-capybara.sh animate
+
+# 播放特定動畫
+./scripts/show-capybara.sh animate-blink    # 眨眼動畫
+./scripts/show-capybara.sh animate-chew     # 咀嚼動畫
+./scripts/show-capybara.sh animate-swim     # 游泳動畫
+./scripts/show-capybara.sh animate-nod      # 點頭動畫
+./scripts/show-capybara.sh animate-ear      # 耳朵抽動
+```
+
+### 📸 jp2a 照片轉 ASCII
+```bash
+# 顯示照片圖庫
+./scripts/show-capybara-photo.sh gallery
+
+# 顯示特定照片
+./scripts/show-capybara-photo.sh 1    # 水豚特寫
+./scripts/show-capybara-photo.sh 2    # 游泳水豚
+./scripts/show-capybara-photo.sh 3    # 水豚家族
+
+# 轉換自訂照片
+./scripts/convert-photo.sh ~/Pictures/my-capybara.jpg
+
+# jp2a 進階選項
+./scripts/convert-photo.sh ~/Pictures/my-capybara.jpg --width=80 --color
 ```
 
 ## 🔧 設定別名
@@ -127,6 +177,20 @@ alias cowsay-zen='cowsay -f ~/terminal-ascii-art/cowsay/capybara-zen.cow'
 alias cowsay-happy='cowsay -f ~/terminal-ascii-art/cowsay/capybara-happy.cow'
 alias cowsay-swim='cowsay -f ~/terminal-ascii-art/cowsay/capybara-swimming.cow'
 alias cowsay-sleepy='cowsay -f ~/terminal-ascii-art/cowsay/capybara-sleepy.cow'
+
+# ⠿ Braille 動畫快速指令
+alias capy-braille='~/terminal-ascii-art/scripts/show-braille-animation.sh'
+alias capy-favorites='~/terminal-ascii-art/scripts/show-braille-animation.sh 3 13 34 25'
+
+# 🌅 終端啟動顯示（加入 .zshrc 末尾）
+capybara-favorites-fast() {
+    local favorites=(3 13 34 25)
+    local random_index=$((RANDOM % ${#favorites[@]}))
+    local selected=${favorites[$random_index]}
+    ~/terminal-ascii-art/scripts/show-braille-animation.sh $selected --startup
+}
+# 自動執行
+capybara-favorites-fast
 ```
 
 ## 📸 使用範例
@@ -169,15 +233,49 @@ $ cowsay -f cowsay/capybara.cow "Time to relax!"
 ...
 ```
 
-### 🔤 Figlet 範例（開發中）
+### 🔤 Figlet 範例
 ```bash
 $ figlet -f figlet/capybara.flf "CAPY"
-# 即將推出...
+  ____     _     ____   __   __
+ / ___|   / \   |  _ \  \ \ / /
+| |      / _ \  | |_) |  \ V / 
+| |___  / ___ \ |  __/    | |  
+ \____|/_/   \_\|_|       |_|  
 ```
 
 ## 🛠️ 開發與貢獻
 
 查看 [CLAUDE.md](./CLAUDE.md) 了解開發指引和貢獻方式。
+
+## 🚨 故障排除
+
+### 常見問題
+
+**Q: 顯示亂碼或方框？**
+- 確保終端支援 UTF-8 編碼：`locale | grep UTF-8`
+- 使用支援 Unicode 的終端（iTerm2、Terminal.app、GNOME Terminal）
+
+**Q: 找不到 cowsay/figlet 指令？**
+```bash
+# macOS
+brew install cowsay figlet jp2a
+
+# Ubuntu/Debian
+sudo apt-get install cowsay figlet jp2a
+```
+
+**Q: 腳本執行權限錯誤？**
+```bash
+chmod +x scripts/*.sh
+```
+
+**Q: Braille 圖案顯示不完整？**
+- 調整終端視窗大小（建議至少 80x24）
+- 使用等寬字型（如 Monaco、Menlo、Source Code Pro）
+
+**Q: 顏色無法正常顯示？**
+- 確認終端支援 256 色：`echo $TERM`
+- 設定環境變數：`export TERM=xterm-256color`
 
 ## 📄 授權
 
@@ -185,7 +283,9 @@ MIT License - 自由使用和修改
 
 ## 🙏 致謝
 
-感謝所有水豚愛好者和 ASCII art 社群的貢獻！
+- 感謝所有水豚愛好者和 ASCII art 社群的貢獻！
+- Braille 圖案來源：[emojicombos.com](https://emojicombos.com/capybara-ascii-art)
+- 照片來源：Pixabay 免費圖庫
 
 ---
 
